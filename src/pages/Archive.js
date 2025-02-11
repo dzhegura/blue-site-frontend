@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./Archive.css";
 
+const API_URL = process.env.REACT_APP_API_URL; // API URL из переменной окружения
+
 function Archive() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/projects")
+    fetch(`${API_URL}/api/projects`)
       .then((response) => response.json())
       .then((data) => setProjects(data))
       .catch((error) => console.error("Ошибка загрузки данных:", error));

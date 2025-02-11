@@ -4,6 +4,7 @@ import { sortDots } from "./sortHandler"; // Подключаем сортиро
 import "./Home.css";
 
 const GRID_SIZE = 40;
+const API_URL = process.env.REACT_APP_API_URL; // API URL из переменной окружения
 
 function getRandomDirection() {
   const step = Math.floor(Math.random() * 5 + 1) * GRID_SIZE;
@@ -31,7 +32,7 @@ function Home() {
   const [isSorted, setIsSorted] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/api/projects")
+    axios.get(`${API_URL}/api/projects`)
       .then(response => {
         const projectsData = response.data.map(project => ({
           ...project,
@@ -41,7 +42,7 @@ function Home() {
       })
       .catch(error => console.error("Ошибка загрузки проектов:", error));
 
-    axios.get("http://localhost:5000/api/contacts")
+    axios.get(`${API_URL}/api/contacts`)
       .then(response => {
         const contactsData = response.data.map(contact => ({
           ...contact,
