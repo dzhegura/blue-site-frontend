@@ -13,15 +13,24 @@ function App() {
     <div className="app-container">
       <Grid />
       <nav className="navbar">
-        <Link to="/" className="logo">
-          KIRILLKOZLIT<span className="logo-dot">.</span>IN
-        </Link>
-        <div className="nav-links">
-          <Link to="/archive">Archive</Link>
-          <Link to="/about">About</Link>
-          <Link to="/contact">Contact</Link>
+        {/* Лого в отдельном контейнере */}
+        <div className="logo-container">
+          <Link to="/" className="logo">
+            KIRILLKOZLIT<span className="logo-dot">.</span>IN
+          </Link>
         </div>
-        <button className="sort-button">Sort</button>
+
+        {/* Навигационные ссылки */}
+        <div className="nav-links">
+          <Link to="/archive">archive</Link>
+          <Link to="/about">about</Link>
+          <Link to="/contact">contact</Link>
+        </div>
+
+        {/* Кнопка сортировки в отдельном контейнере */}
+        <div className="sort-container">
+          <button className="sort-button">SORT</button>
+        </div>
       </nav>
 
       {/* Точки только на главной странице */}

@@ -13,5 +13,5 @@ if (rootElement) {
         </BrowserRouter>
     );
 } else {
-    console.error("❌ Ошибка: контейнер #root не найден в index.html!");
+    console.error("Ошибка: контейнер #root не найден в index.html!");
 }
