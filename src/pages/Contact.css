@@ -1,0 +1,87 @@
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 40px;
+    text-align: center;
+  }
+  
+  .contact-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1000px; /* Увеличенная ширина */
+    width: 100%;
+    gap: 60px;
+  }
+  
+  .contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .contact-text {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #FDF1E7;
+    text-align: left;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+  
+  .contact-text input {
+    border: none;
+    background: none;
+    border-bottom: 1px dashed #FDF1E7;
+    color: #FDF1E7;
+    font-size: 20px;
+    width: auto;
+    min-width: 100px;
+    text-align: center;
+    outline: none;
+    padding: 5px 0;
+  }
+  
+  /* Убираем точки внутри полей */
+  .contact-text input::placeholder {
+    color: transparent;
+  }
+  
+  .send-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    background-color: #FF7A00;
+    color: #FDF1E7;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .send-button:hover {
+    background-color: #e66a00;
+  }
+  
+  .contact-info {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .contact-info p {
+    font-size: 20px;
+    color: #FDF1E7;
+  }
+  
+  .contact-info a {
+    color: #FF7A00;
+    text-decoration: none;
+  }
+  
+  .contact-info a:hover {
+    text-decoration: underline;
+  }
+  
