@@ -83,4 +83,33 @@
 .sorted-contact-3 { left: 943px !important; top: 480px !important; }
 .sorted-contact-4 { left: 937px !important; top: 560px !important; }
 
+@media (max-width: 768px) {
+  .home-container {
+    height: auto;
+    padding: 20px;
+  }
 
+  .dot-label {
+    font-size: 14px;
+    margin-left: 5px;
+  }
+
+  /* Перераспределяем точки */
+  .sorted-project-1,
+  .sorted-project-2,
+  .sorted-project-3,
+  .sorted-project-4,
+  .sorted-project-5 {
+    left: 20px !important;
+    position: relative;
+  }
+
+  .sorted-contact-1,
+  .sorted-contact-2,
+  .sorted-contact-3,
+  .sorted-contact-4 {
+    left: auto !important;
+    right: 20px !important;
+    position: relative;
+  }
+}

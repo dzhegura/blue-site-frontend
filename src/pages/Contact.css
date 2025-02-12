@@ -100,3 +100,27 @@
   background-color: var(--text-color);
   color: var(--bg-color);
 }
+
+@media (max-width: 768px) {
+  .contact-container {
+    padding: 40px 20px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .contact-form {
+    font-size: 18px;
+  }
+
+  .contact-form input {
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+  }
+
+  .send-button {
+    position: static;
+    margin-top: 20px;
+    width: 100%;
+  }
+}
