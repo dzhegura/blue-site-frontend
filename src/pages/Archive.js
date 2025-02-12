@@ -7,7 +7,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 
 const Archive = () => {
   const [projects, setProjects] = useState([]);
-  const [expandedProject, setExpandedProject] = useState(null); // Состояние для отслеживания открытой строки
+  const [expandedProject, setExpandedProject] = useState(null);
 
   useEffect(() => {
     if (!API_URL) {
@@ -42,7 +42,7 @@ const Archive = () => {
         </div>
 
         {projects.map((project, index) => (
-          <div key={index}>
+          <div key={index} className={`project-container ${expandedProject === index ? "active" : ""}`}>
             <div className="table-row" onClick={() => toggleDescription(index)}>
               <span>{project.title}</span>
               <span>{project.year}</span>
@@ -51,11 +51,9 @@ const Archive = () => {
             </div>
 
             {/* Выпадающее описание */}
-            {expandedProject === index && (
-              <div className="project-description">
-                <p>{project.description}</p>
-              </div>
-            )}
+            <div className={`project-description ${expandedProject === index ? "expanded" : ""}`}>
+              <p>{project.description}</p>
+            </div>
           </div>
         ))}
       </div>

@@ -12,7 +12,7 @@
   flex-direction: column;
   margin-top: 120px;
   width: 100%;
-  background: none; /* Убираем подложку */
+  background: none;
   position: relative;
   z-index: 1; 
   font-size: 18px;
@@ -35,12 +35,10 @@
   gap: 10px;
 }
 
-/* Иконка сортировки после текста */
 .header-item img {
-  order: 1; /* Ставим иконку после текста */
+  order: 1;
 }
 
-/* Иконка сортировки */
 .sort-icon {
   width: 14px;
   height: 14px;
@@ -58,30 +56,38 @@
   grid-template-columns: 2fr 1fr 2fr 1fr;
   gap: 20px;
   padding: 10px 0;
+  cursor: pointer;
   transition: background 0.3s, color 0.3s;
 }
 
-/* Убираем остатки сетки */
-.table-header,
-.table-row {
-  border: none;
-}
-
-/* Эффект при наведении */
+/* Подсветка при наведении */
 .table-row:hover {
   background: var(--text-color);
   color: var(--bg-color);
 }
 
-/* Выпадающее описание проекта */
+/* Активное состояние строки */
+.project-container.active .table-row {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+
+/* Выпадающее описание */
 .project-description {
-  padding: 10px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
   background-color: var(--bg-color);
   color: var(--text-color);
-  border: 1px var(--text-color);
-  margin-top: -1px; /* Убираем двойную границу */
-  font-size: 16px;
-  animation: fadeIn 0.3s ease-in-out; /* Анимация появления */
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
+  padding: 0 20px;
+}
+
+/* Раскрытие описания */
+.project-description.expanded {
+  max-height: 200px; /* Ограничение высоты */
+  opacity: 1;
+  padding: 10px 20px;
 }
 
 /* Анимация появления */
@@ -94,16 +100,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-/* Эффект при наведении на строку */
-.table-row {
-  cursor: pointer; /* Меняем курсор на указатель */
-  transition: background 0.3s, color 0.3s;
-}
-
-/* Эффект при наведении на строку */
-.table-row:hover {
-  background: var(--text-color);
-  color: var(--bg-color);
 }
