@@ -7,8 +7,9 @@
   --grid-color: rgba(253, 241, 231, 0.2);
 }
 
-/* --- ОБЩИЕ НАСТРОЙКИ --- */
-body, html {
+/* --- Общие настройки --- */
+body,
+html {
   margin: 0;
   padding: 0;
   background-color: var(--bg-color);
@@ -20,7 +21,7 @@ body, html {
   position: relative;
 }
 
-/* --- СЕТКА (ФОН) --- */
+/* --- Сетка (фон) --- */
 .grid-container {
   position: fixed;
   top: 0;
@@ -35,7 +36,7 @@ body, html {
     linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
 
-/* --- ТОЧКИ --- */
+/* --- Точки --- */
 .dot {
   position: absolute;
   width: 10px;
@@ -45,81 +46,119 @@ body, html {
   z-index: 1;
 }
 
-/* --- НАВИГАЦИЯ --- */
+/* --- Навигация --- */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
-  background: rgba(0, 0, 0, 0.2);
+  padding: 44px 160px;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: calc(100% - 400px);
   z-index: 10;
 }
 
-/* --- ЛОГОТИП (НЕ ДВИГАЕМ) --- */
+/* --- Логотип --- */
 .logo {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 400;
   color: var(--text-color);
   cursor: pointer;
-  display: inline-flex; /* Делаем flex, чтобы вся область была кликабельной */
-  text-align: left;
   text-decoration: none;
 }
 
-/* --- ТОЧКА В ЛОГОТИПЕ --- */
+/* --- Точка в логотипе --- */
 .logo-dot {
   color: var(--accent-color);
-  position: relative
 }
 
-/* --- ЦЕНТРИРОВАННЫЕ ВКЛАДКИ (СМЕЩЕНИЕ ВЛЕВО НА 150px) --- */
+/* --- Центрированные вкладки (archive, about, contact) --- */
 .nav-links {
   display: flex;
-  gap: 40px;
-  text-align: center;
-  justify-content: center;
-  flex-grow: 1;
-  transform: translateX(-150px);
-  max-width: 720px;
+  gap: 100px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .nav-links a {
   color: var(--text-color);
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
   transition: color 0.3s;
+  margin-top: 10px;
 }
 
 .nav-links a:hover {
   color: var(--accent-color);
 }
 
-/* --- КНОПКА SORT (СМЕЩЕНИЕ ВЛЕВО НА 150px) --- */
+.nav-link.active {
+  color: var(--accent-color);
+}
+
+/* --- Кнопка SORT (только на главной странице) --- */
 .sort-button {
-  position: absolute;
-  right: 40px;
-  transform: translateX(-150px);
+  font-family: "Chakra Petch", sans-serif;
   background: none;
   border: none;
   color: var(--text-color);
-  font-size: 18px;
+  font-size: 36px;
   font-weight: 400;
   cursor: pointer;
+  transition: color 0.3s;
+  margin-right: 112px;
+  margin-top: 28px;
 }
 
+/* Изменение цвета при наведении */
 .sort-button:hover {
   color: var(--accent-color);
 }
 
-/* --- КОНТЕНТ --- */
+/* Изменение цвета во время нажатия */
+.sort-button:active {
+  color: var(--accent-color);
+}
+
+/* Оставляем цвет после нажатия */
+.sort-button.active {
+  color: var(--accent-color);
+}
+
+/* --- Контент --- */
 .content {
   padding: 80px 20px;
   width: 100vw;
   height: 100vh;
   text-align: center;
+}
+
+/* --- Футер --- */
+.footer {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 40px;
+  font-size: 14px;
+  color: var(--text-color);
+  background: none;
+  z-index: 10;
+}
+
+.footer-left {
+  text-align: left;
+  margin-left: 120px;
+  margin-bottom: 31px;
+  font-size: 18px;
+}
+
+.footer-right {
+  margin-right: 200px;
+  font-size: 18px;
 }

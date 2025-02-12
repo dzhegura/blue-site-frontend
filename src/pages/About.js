@@ -7,7 +7,7 @@ function About() {
       <div className="about-content">
         {/* Фото профиля */}
         <div className="profile-photo">
-          <img src="/path-to-your-photo.jpg" alt="Profile" />
+          <img src="/images/photo.png" alt="Profile" />
         </div>
 
         {/* Текстовая информация */}
@@ -25,27 +25,27 @@ function About() {
           <h2>Interests</h2>
           <div className="interests">
             <div className="interest-item">
-              <img src="/path-to-icon-cooking.png" alt="Cooking" />
+              <img src="/images/cooking.svg" alt="Cooking" />
               <span>cooking</span>
             </div>
             <div className="interest-item">
-              <img src="/path-to-icon-programming.png" alt="Programming" />
+              <img src="/images/programming.svg" alt="Programming" />
               <span>programming</span>
             </div>
             <div className="interest-item">
-              <img src="/path-to-icon-boxing.png" alt="Boxing" />
+              <img src="/images/boxing.svg" alt="Boxing" />
               <span>boxing</span>
             </div>
             <div className="interest-item">
-              <img src="/path-to-icon-rowing.png" alt="Rowing" />
+              <img src="/images/rowing.svg" alt="Rowing" />
               <span>rowing</span>
             </div>
             <div className="interest-item">
-              <img src="/path-to-icon-courses.png" alt="Courses" />
+              <img src="/images/courses.svg" alt="Courses" />
               <span>courses</span>
             </div>
             <div className="interest-item">
-              <img src="/path-to-icon-reading.png" alt="Reading" />
+              <img src="/images/reading.svg" alt="Reading" />
               <span>reading</span>
             </div>
           </div>
@@ -54,27 +54,27 @@ function About() {
           <h2>Skills</h2>
           <div className="skills">
             <div className="skill-item">
-              <img src="/path-to-icon-autodesk.png" alt="AutoDesk API" />
+              <img src="/images/skills.svg" alt="AutoDesk API" />
               <span>AutoDesk API</span>
             </div>
             <div className="skill-item">
-              <img src="/path-to-icon-archicad.png" alt="ArchiCAD API" />
+              <img src="/images/skills.svg" alt="ArchiCAD API" />
               <span>ArchiCAD API</span>
             </div>
             <div className="skill-item">
-              <img src="/path-to-icon-bim.png" alt="BIM" />
+              <img src="/images/skills.svg" alt="BIM" />
               <span>BIM</span>
             </div>
             <div className="skill-item">
-              <img src="/path-to-icon-python.png" alt="Python" />
+              <img src="/images/skills.svg" alt="Python" />
               <span>Python</span>
             </div>
             <div className="skill-item">
-              <img src="/path-to-icon-javascript.png" alt="JavaScript" />
+              <img src="/images/skills.svg" alt="JavaScript" />
               <span>JavaScript</span>
             </div>
             <div className="skill-item">
-              <img src="/path-to-icon-takeoff.png" alt="On Screen Takeoff API" />
+              <img src="/images/skills.svg" alt="On Screen Takeoff API" />
               <span>On Screen Takeoff API</span>
             </div>
           </div>

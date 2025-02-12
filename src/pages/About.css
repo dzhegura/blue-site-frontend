@@ -1,63 +1,87 @@
+/* Общий контейнер */
 .about-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start; /* Выравниваем содержимое по верху */
   height: 100vh;
-  padding: 40px;
-  text-align: center;
+  padding: 200px 0px; /* Убираем отрицательный padding */
+  color: var(--text-color);
 }
 
+/* Основной контент */
 .about-content {
   display: flex;
-  align-items: flex-start;
-  max-width: 1000px;
-  gap: 40px;
+  max-width: 1600px;
+  width: 100%;
+  gap: 50px;
+  align-items: flex-start; /* Выравниваем элементы внутри */
+}
+
+/* Фото профиля */
+.profile-photo {
+  width: 400px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 160px; /* Оставляем левый отступ */
 }
 
 .profile-photo img {
-  width: 200px;
-  height: 200px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 100%;
+  height: auto;
 }
 
+/* Текстовый блок */
 .about-text {
-  max-width: 600px;
-}
-
-h1 {
-  font-size: 32px;
-  color: #FDF1E7;
-  margin-bottom: 10px;
-}
-
-h2 {
-  font-size: 24px;
-  color: #FDF1E7;
-  margin-top: 20px;
-}
-
-.interests,
-.skills {
+  flex: 1;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start; /* Выравниваем текст по верху */
+  margin-top: 0px; /* Убираем ненужный отступ */
+}
+
+/* Заголовок */
+.about-text h1 {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: 0; /* Убираем отступ */
+}
+
+/* Обычный текст */
+.about-text p {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-top: 8px;
+}
+
+/* Заголовки секций */
+h2 {
+  margin-bottom: 5px;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* Интересы */
+.interests, .skills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 15px;
   margin-top: 10px;
 }
 
-.interest-item,
-.skill-item {
+.interest-item, .skill-item {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
+  font-size: 20px;
 }
 
-.interest-item img,
-.skill-item img {
-  width: 40px;
-  height: 40px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
+.interest-item img, .skill-item img {
+  width: 42px;
+  height: 48px;
 }

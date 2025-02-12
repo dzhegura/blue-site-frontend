@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { sortDots } from "./sortHandler"; // Подключаем сортировку
+import { sortDots } from "./sortHandler";
 import "./Home.css";
 
+// Используем API URL из переменной окружения
+const API_URL = process.env.REACT_APP_API_URL;
+
 const GRID_SIZE = 40;
-const API_URL = process.env.REACT_APP_API_URL; // API URL из переменной окружения
+const HEADER_HEIGHT = 80;
+const FOOTER_HEIGHT = 60;
 
 function getRandomDirection() {
   const step = Math.floor(Math.random() * 5 + 1) * GRID_SIZE;
@@ -19,19 +23,25 @@ function getRandomDirection() {
 
 function getRandomPosition() {
   const maxX = Math.floor(window.innerWidth / GRID_SIZE);
-  const maxY = Math.floor(window.innerHeight / GRID_SIZE);
+  const maxY = Math.floor((window.innerHeight - HEADER_HEIGHT - FOOTER_HEIGHT) / GRID_SIZE);
   return {
-    x: Math.floor(Math.random() * maxX) * GRID_SIZE + 15,
-    y: Math.floor(Math.random() * maxY) * GRID_SIZE,
+    left: Math.floor(Math.random() * maxX) * GRID_SIZE,
+    top: Math.floor(Math.random() * maxY) * GRID_SIZE + HEADER_HEIGHT,
   };
 }
 
-function Home() {
+function Home({ isSorted, setIsSorted }) {
   const [projects, setProjects] = useState([]);
   const [contacts, setContacts] = useState([]);
-  const [isSorted, setIsSorted] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!API_URL) {
+      console.error("Ошибка: Переменная REACT_APP_API_URL не установлена!");
+      setError("API URL не настроен.");
+      return;
+    }
+
     axios.get(`${API_URL}/api/projects`)
       .then(response => {
         const projectsData = response.data.map(project => ({
@@ -40,7 +50,10 @@ function Home() {
         }));
         setProjects(projectsData);
       })
-      .catch(error => console.error("Ошибка загрузки проектов:", error));
+      .catch(error => {
+        console.error("Ошибка загрузки проектов:", error);
+        setError("Не удалось загрузить проекты.");
+      });
 
     axios.get(`${API_URL}/api/contacts`)
       .then(response => {
@@ -50,59 +63,65 @@ function Home() {
         }));
         setContacts(contactsData);
       })
-      .catch(error => console.error("Ошибка загрузки контактов:", error));
+      .catch(error => {
+        console.error("Ошибка загрузки контактов:", error);
+        setError("Не удалось загрузить контакты.");
+      });
+  }, []);
 
-    const interval = setInterval(() => {
-      if (!isSorted) {
+  useEffect(() => {
+    if (!isSorted) {
+      const interval = setInterval(() => {
         setProjects(prevProjects =>
           prevProjects.map(project => {
             const direction = getRandomDirection();
-            let newX = project.position.x + direction.dx;
-            let newY = project.position.y + direction.dy;
+            let newLeft = project.position.left + direction.dx;
+            let newTop = project.position.top + direction.dy;
 
-            if (newX < 0) newX += window.innerWidth;
-            if (newX >= window.innerWidth) newX -= window.innerWidth;
-            if (newY < 0) newY += window.innerHeight;
-            if (newY >= window.innerHeight) newY -= window.innerHeight;
+            if (newLeft < 0) newLeft += window.innerWidth;
+            if (newLeft >= window.innerWidth) newLeft -= window.innerWidth;
+            if (newTop < HEADER_HEIGHT) newTop = HEADER_HEIGHT;
+            if (newTop >= window.innerHeight - FOOTER_HEIGHT) newTop = window.innerHeight - FOOTER_HEIGHT - GRID_SIZE;
 
-            return { ...project, position: { x: newX, y: newY } };
+            return { ...project, position: { left: newLeft, top: newTop } };
           })
         );
 
         setContacts(prevContacts =>
           prevContacts.map(contact => {
             const direction = getRandomDirection();
-            let newX = contact.position.x + direction.dx;
-            let newY = contact.position.y + direction.dy;
+            let newLeft = contact.position.left + direction.dx;
+            let newTop = contact.position.top + direction.dy;
 
-            if (newX < 0) newX += window.innerWidth;
-            if (newX >= window.innerWidth) newX -= window.innerWidth;
-            if (newY < 0) newY += window.innerHeight;
-            if (newY >= window.innerHeight) newY -= window.innerHeight;
+            if (newLeft < 0) newLeft += window.innerWidth;
+            if (newLeft >= window.innerWidth) newLeft -= window.innerWidth;
+            if (newTop < HEADER_HEIGHT) newTop = HEADER_HEIGHT;
+            if (newTop >= window.innerHeight - FOOTER_HEIGHT) newTop = window.innerHeight - FOOTER_HEIGHT - GRID_SIZE;
 
-            return { ...contact, position: { x: newX, y: newY } };
+            return { ...contact, position: { left: newLeft, top: newTop } };
           })
         );
-      }
-    }, 3000);
+      }, 3000);
 
-    return () => clearInterval(interval);
+      return () => clearInterval(interval);
+    }
+  }, [isSorted]);
+
+  useEffect(() => {
+    sortDots(projects, contacts, isSorted, setProjects, setContacts);
   }, [isSorted]);
 
   return (
     <div className="home-container">
-      <button className="sort-button" onClick={() => sortDots(projects, contacts, isSorted, setProjects, setContacts, setIsSorted)}>
-        {isSorted ? "Unsort" : "Sort"}
-      </button>
-
+      {error && <div className="error-message">{error}</div>}
       <div className="grid-dots">
         {projects.map((project, index) => (
           <div
             key={`project-${index}`}
-            className="dot-container project-dot"
+            className={`dot-container project-dot ${project.cssClass}`}
             style={{
-              left: `${project.position.x}px`,
-              top: `${project.position.y}px`
+              left: `${project.position.left}px`,
+              top: `${project.position.top}px`
             }}
           >
             <div className="dot"></div>
@@ -115,13 +134,13 @@ function Home() {
         {contacts.map((contact, index) => (
           <div
             key={`contact-${index}`}
-            className="dot-container contact-dot"
+            className={`dot-container contact-dot ${contact.cssClass}`}
             style={{
-              left: `${contact.position.x}px`,
-              top: `${contact.position.y}px`
+              left: `${contact.position.left}px`,
+              top: `${contact.position.top}px`
             }}
           >
-            <div className="contact-dot"></div>
+            <div className="dot"></div>
             <div className="dot-label">
               {contact.type}: {contact.value}
             </div>

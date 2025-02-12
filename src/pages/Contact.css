@@ -1,87 +1,102 @@
+/* Контейнер формы */
 .contact-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 40px;
-    text-align: center;
-  }
-  
-  .contact-content {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1000px; /* Увеличенная ширина */
-    width: 100%;
-    gap: 60px;
-  }
-  
-  .contact-form {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .contact-text {
-    font-size: 20px;
-    line-height: 1.8;
-    color: #FDF1E7;
-    text-align: left;
-    max-width: 700px;
-    margin-bottom: 20px;
-  }
-  
-  .contact-text input {
-    border: none;
-    background: none;
-    border-bottom: 1px dashed #FDF1E7;
-    color: #FDF1E7;
-    font-size: 20px;
-    width: auto;
-    min-width: 100px;
-    text-align: center;
-    outline: none;
-    padding: 5px 0;
-  }
-  
-  /* Убираем точки внутри полей */
-  .contact-text input::placeholder {
-    color: transparent;
-  }
-  
-  .send-button {
-    width: 100%;
-    padding: 12px;
-    font-size: 20px;
-    font-weight: 400;
-    border: none;
-    background-color: #FF7A00;
-    color: #FDF1E7;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-  }
-  
-  .send-button:hover {
-    background-color: #e66a00;
-  }
-  
-  .contact-info {
-    flex: 1;
-    text-align: left;
-  }
-  
-  .contact-info p {
-    font-size: 20px;
-    color: #FDF1E7;
-  }
-  
-  .contact-info a {
-    color: #FF7A00;
-    text-decoration: none;
-  }
-  
-  .contact-info a:hover {
-    text-decoration: underline;
-  }
-  
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 100vh;
+  padding: 176px 160px;
+  text-align: left;
+  flex-direction: column;
+}
+
+/* Форма */
+.contact-form {
+  max-width: 1400px;
+  width: 100%;
+  font-size: 24px;
+  color: var(--text-color);
+}
+
+/* Поля ввода */
+.contact-form input {
+  font-family: "Chakra Petch", sans-serif;
+  border: none;
+  background: none;
+  border-bottom: 1px dashed var(--text-color);
+  color: var(--text-color);
+  font-size: 22px;
+  width: 400px; 
+  max-width: 100%;
+  outline: none;
+  padding: 8px 0;
+  margin-left: 10px;
+}
+
+/* Для конкретно строки "Here is my message" */
+.contact-form input[name="message"] {
+  width: 1200px; /* Делаем строку еще длиннее */
+  max-width: 100%;
+}
+
+/* Скрываем плейсхолдер */
+.contact-form input::placeholder {
+  color: transparent;
+}
+
+/* Контактная информация */
+.contact-info {
+  max-width: 1200px;
+  width: 100%;
+  margin-top: 40px;
+  font-size: 18px;
+}
+
+.contact-info p {
+  color: var(--text-color);
+}
+
+.contact-info h3 {
+  color: var(--text-color);
+  font-size: 20px;
+}
+
+.contact-info a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Кнопка отправки */
+.send-button {
+  width: 200px;
+  height: 50px;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-color);
+  background-color: transparent;
+  border: 1px solid var(--text-color);
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  position: absolute;
+  right: 440px;
+  bottom: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Chakra Petch", sans-serif;
+}
+
+/* Состояния кнопки */
+.send-button:hover {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}
+
+.send-button:active {
+  background-color: var(--text-color);
+  color: var(--bg-color);
+}

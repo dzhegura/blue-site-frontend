@@ -24,27 +24,28 @@
   transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
-  transition: left 2s ease-in-out, top 2s ease-in-out;
+  transition: left 2s ease-in-out, top 2s ease-in-out; /* Плавное движение */
 }
 
 /* Общий стиль точек */
 .dot {
   width: 10px;
   height: 10px;
-  border-radius: 50%;
 }
 
 .project-dot .dot {
-  background-color: orange;
+  background-color: var(--accent-color);
+  border-radius: 0;
 }
 
 .contact-dot .dot {
-  background-color: white;
+  background-color: var(--text-color);
+  border-radius: 0;
 }
 
 /* Подписи справа от точки */
 .dot-label {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--text-color);
   text-align: left;
   font-weight: 400;
@@ -68,3 +69,18 @@
 .sort-button:hover {
   color: var(--accent-color);
 }
+
+/* Проекты */
+.sorted-project-1 { left: 290px !important; top: 240px !important; }
+.sorted-project-2 { left: 262px !important; top: 320px !important; }
+.sorted-project-3 { left: 290px !important; top: 400px !important; }
+.sorted-project-4 { left: 252px !important; top: 480px !important; }
+.sorted-project-5 { left: 267px !important; top: 560px !important; }
+
+/* Контакты */
+.sorted-contact-1 { left: 966px !important; top: 320px !important; }
+.sorted-contact-2 { left: 969px !important; top: 400px !important; }
+.sorted-contact-3 { left: 943px !important; top: 480px !important; }
+.sorted-contact-4 { left: 937px !important; top: 560px !important; }
+
+

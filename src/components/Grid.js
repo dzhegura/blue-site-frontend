@@ -14,7 +14,7 @@ const Grid = () => {
       canvas.height = window.innerHeight;
 
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.strokeStyle = "rgba(253, 241, 231, 0.2)";
+      ctx.strokeStyle = "rgba(253, 241, 231, 0)";
       ctx.lineWidth = 1;
 
       for (let x = 0; x < canvas.width; x += GRID_SIZE) {

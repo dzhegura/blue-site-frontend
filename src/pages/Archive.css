@@ -1,56 +1,75 @@
 .archive-container {
-    text-align: center;
-    padding: 50px;
-    color: var(--text-color);
-    font-family: "Chakra Petch", sans-serif;
-  }
-  
-  /* --- Таблица --- */
-  .archive-table {
-    width: 80%;
-    margin: 20px auto;
-    border-collapse: collapse;
-    font-size: 18px;
-  }
-  
-  /* --- Заголовки таблицы --- */
-  .archive-table th {
-    background-color: transparent;
-    color: var(--text-color);
-    text-transform: uppercase;
-    text-align: left;
-    padding: 12px;
-    font-weight: 400;
-    cursor: pointer;
-  }
-  
-  /* --- Добавляем стрелки для сортировки --- */
-  .archive-table th:hover {
-    color: var(--accent-color);
-  }
-  
-  .archive-table th::after {
-    content: " ⬍";
-    font-size: 14px;
-    color: var(--accent-color);
-    opacity: 0.8;
-  }
-  
-  /* --- Ячейки таблицы (без границ) --- */
-  .archive-table td {
-    padding: 12px;
-    text-align: left;
-  }
-  
-  /* --- Выделение строк при наведении --- */
-  .archive-table tr:hover {
-    background-color: rgba(255, 122, 0, 0.2);
-    transition: 0.3s;
-  }
-  
-  /* --- Первая колонка с названием проектов --- */
-  .archive-table td:first-child {
-    color: var(--text-color);
-    font-weight: 400;
-  }
-  
+  margin: 0 auto;
+  padding: 60px 160px;
+  color: var(--text-color);
+  position: relative;
+  z-index: 1;
+}
+
+/* Таблица */
+.archive-table {
+  display: flex;
+  flex-direction: column;
+  margin-top: 120px;
+  width: 100%;
+  background: none; /* Убираем подложку */
+  position: relative;
+  z-index: 1; 
+  font-size: 18px;
+}
+
+/* Заголовок */
+.table-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 16px 0;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Стилизация ячеек заголовка */
+.header-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Иконка сортировки после текста */
+.header-item img {
+  order: 1; /* Ставим иконку после текста */
+}
+
+/* Иконка сортировки */
+.sort-icon {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.sort-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Строки таблицы */
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 2fr 1fr;
+  gap: 20px;
+  padding: 10px 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Убираем остатки сетки */
+.table-header,
+.table-row {
+  border: none;
+}
+
+/* Эффект при наведении */
+.table-row:hover {
+  background: var(--text-color);
+  color: var(--bg-color);
+}
+

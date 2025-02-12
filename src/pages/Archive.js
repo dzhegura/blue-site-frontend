@@ -1,42 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Archive.css";
 
-const API_URL = process.env.REACT_APP_API_URL; // API URL из переменной окружения
+// URL API из переменной окружения
+const API_URL = process.env.REACT_APP_API_URL;
 
-function Archive() {
+const Archive = () => {
   const [projects, setProjects] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/projects`)
-      .then((response) => response.json())
-      .then((data) => setProjects(data))
-      .catch((error) => console.error("Ошибка загрузки данных:", error));
+    if (!API_URL) {
+      console.error("Ошибка: Переменная REACT_APP_API_URL не установлена!");
+      setError("API URL не настроен.");
+      return;
+    }
+
+    axios.get(`${API_URL}/api/projects`)
+      .then((response) => setProjects(response.data))
+      .catch((error) => {
+        console.error("Ошибка загрузки данных:", error);
+        setError("Не удалось загрузить данные.");
+      });
   }, []);
 
   return (
     <div className="archive-container">
-      <table className="archive-table">
-        <thead>
-          <tr>
-            <th>Project</th>
-            <th>Year</th>
-            <th>Category</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {projects.map((project, index) => (
-            <tr key={index}>
-              <td>{project.title}</td>
-              <td>{project.year}</td>
-              <td>{project.category}</td>
-              <td>{project.type}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="archive-table">
+        <div className="table-header">
+          <span className="header-item">
+            <img src="/images/arrow.svg" alt="Sort Icon" className="sort-icon" />
+            PROJECT
+          </span>
+          <span className="header-item">
+            <img src="/images/arrow.svg" alt="Sort Icon" className="sort-icon" />
+            YEAR
+          </span>
+          <span>CATEGORY</span>
+          <span>TYPE</span>
+        </div>
+
+        {error ? (
+          <div className="error-message">{error}</div>
+        ) : (
+          projects.map((project, index) => (
+            <div key={index} className="table-row">
+              <span>{project.title}</span>
+              <span>{project.year}</span>
+              <span>{project.category}</span>
+              <span>{project.type}</span>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
-}
+};
 
 export default Archive;
