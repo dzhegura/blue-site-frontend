@@ -98,14 +98,18 @@
     padding: 20px;
   }
 
+  .archive-table {
+    margin-top: 60px;
+  }
+
   .table-header {
     grid-template-columns: 1fr 1fr;
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .table-row {
     grid-template-columns: 1fr 1fr;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .project-description {

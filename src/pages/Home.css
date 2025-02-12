@@ -101,7 +101,9 @@
   .sorted-project-4,
   .sorted-project-5 {
     left: 20px !important;
+    top: auto !important;
     position: relative;
+    margin-bottom: 20px;
   }
 
   .sorted-contact-1,
@@ -110,6 +112,8 @@
   .sorted-contact-4 {
     left: auto !important;
     right: 20px !important;
+    top: auto !important;
     position: relative;
+    margin-bottom: 20px;
   }
 }

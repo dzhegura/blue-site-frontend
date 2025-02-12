@@ -25,7 +25,7 @@
   border-bottom: 1px dashed var(--text-color);
   color: var(--text-color);
   font-size: 22px;
-  width: 400px; 
+  width: 400px;
   max-width: 100%;
   outline: none;
   padding: 8px 0;
@@ -34,7 +34,8 @@
 
 /* Для конкретно строки "Here is my message" */
 .contact-form input[name="message"] {
-  width: 1200px; /* Делаем строку еще длиннее */
+  width: 1200px;
+  /* Делаем строку еще длиннее */
   max-width: 100%;
 }
 

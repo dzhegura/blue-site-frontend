@@ -164,7 +164,12 @@ html {
 }
 
 @media (max-width: 768px) {
-  /* Уменьшаем отступы */
+  /* Общие настройки для мобильных устройств */
+  body, html {
+    overflow: auto; /* Разрешаем скролл */
+  }
+
+  /* Навигация */
   .navbar {
     padding: 20px;
     flex-direction: column;
@@ -172,25 +177,21 @@ html {
     width: 100%;
   }
 
-  /* Центрируем навигацию */
   .nav-links {
-    gap: 40px;
+    gap: 20px;
     flex-direction: row;
     justify-content: center;
+    transform: none;
+    position: static;
+    margin-top: 10px;
   }
 
   .nav-links a {
-    font-size: 18px;
+    font-size: 16px;
   }
 
-  /* Логотип */
   .logo {
     font-size: 24px;
-  }
-
-  /* Контент */
-  .content {
-    padding: 40px 10px;
   }
 
   /* Кнопка SORT */

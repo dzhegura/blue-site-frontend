@@ -88,9 +88,9 @@ h2 {
 
 @media (max-width: 768px) {
   .about-container {
+    padding: 40px 20px;
     flex-direction: column;
     align-items: center;
-    padding: 40px 20px;
   }
 
   .about-content {
