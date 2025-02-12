@@ -31,7 +31,7 @@ function Contact() {
       });
 
       if (response.data.success) {
-        setStatusMessage("Message sent successfully!");
+        setStatusMessage();
         setFormData({ name: "", email: "", phone: "", message: "" });
       } else {
         setStatusMessage("Error while sending, try again later.");
